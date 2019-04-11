@@ -1,1 +1,3 @@
 *.agdai
+.exam.agda.vim
+__Agda__
