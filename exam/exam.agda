@@ -93,19 +93,20 @@ const = (λ x y -> x)
 
 -- Exercise c; Define an interpretation function evalSKI
 -- given an SKI term of type σ, and an env, produce value of type Val σ
+evalSKI : ∀ { Γ σ } -> SKI σ -> Env Γ -> Val σ
+evalSKI S            e = {! !}
+evalSKI K            e = {! !}   -- const
+evalSKI I            e = λ x → x -- id
+evalSKI (SKIApp x y) e = {!  !}
+evalSKI (SKIVar x)   e = x
+
+-- Other approach
 -- evalSKI : ∀ { Γ σ } -> SKI σ -> Env Γ -> Val σ
 -- evalSKI (S f g x)    e = {!!}
 -- evalSKI (K y x)      e = evalSKI y e
 -- evalSKI (I x)        e = evalSKI x e
 -- evalSKI (SKIApp x y) e = {!   !}
 -- evalSKI (SKIVar x)   e = {!   !}
-
-evalSKI : ∀ { Γ σ } -> SKI σ -> Env Γ -> Val σ
-evalSKI S            e = {! !}
-evalSKI K            e = {! !}
-evalSKI I            e = λ x → x -- id
-evalSKI (SKIApp x y) e = {!  !}
-evalSKI (SKIVar x)   e = x
 
 
 lambda : ∀ {σ Γ τ} -> Term Γ σ -> SKI σ
